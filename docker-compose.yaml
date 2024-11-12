@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  fastapi_app:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    volumes:
+      - ./app:/project/app  # Монтируем папку app внутри project
+    env_file:
+      - docker.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis  # Зависимость от сервиса Redis
+
+  redis:
+    image: "redis/redis-stack:latest"  # Используем образ Redis с поддержкой RedisJSON
+    ports:
+      - "6379:6379"  # Порт Redis по умолчанию
+    volumes:
+      - redis_data:/data  # Монтируем том для хранения данных Redis
+
+volumes:
+  redis_data:
+    driver: local
