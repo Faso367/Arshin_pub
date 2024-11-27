@@ -21,16 +21,4 @@ app = init_routes(defaultApp)
 app.add_exception_handler(ValueError, custom_validation_exception_handler)
 app.add_exception_handler(RequestValidationError, validation_exception_handler)
 
-
-# Список сайтов и IP адресов, с которых можно обращаться к API
-origins = ["*"]
-
-app.add_middleware(
-    CORSMiddleware,
-    #ErrorHandlingMiddleware,
-    allow_origins=origins,
-    allow_credentials=True, # файлы cookie должны поддерживаться для запросов кросс-источника
-    allow_methods=["POST", "GET"],  # разрешить только POST и GET
-    #allow_headers=["*"]
-)
 app.add_middleware(ErrorHandlingMiddleware)
