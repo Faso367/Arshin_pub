@@ -11,3 +11,5 @@ REST API позволяет:
 логгирование, CORS, JWT аутентификация, каждый endpoint покрыт Unit тестами на pytest.
 Для валидации всех входных и выходных данных используется pydantic V3, есть openAPI документация.
 Используемые технологии: Python 3.13, PostgreSQL 17, Redis 7.4.1 (с JSON расширением), SQLAlchemy 2.0.36, asyncpg 0.30.0, docker-контейнер на базе Alpine Linux.
+
+Скрипты для автоматизированной загрузки файлов из ФГИС Аршин и их загрузки в БД можно найти здесь: https://github.com/Faso367/ServerScripts 
